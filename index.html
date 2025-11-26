@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC Forge</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #fafafa;
+      color: #333;
+    }
+
+    nav {
+      background: #fff;
+      padding: 12px 20px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #b91c1c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .cart-btn {
+      background: #b91c1c;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero h2 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .hero a {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #b91c1c;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .catalog, .cart, .contact {
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .catalog h2, .cart h2, .contact h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 260px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 16px;
+      background: white;
+      text-align: center;
+    }
+
+    .card span {
+      font-size: 13px;
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .card h3 {
+      margin: 12px 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card button {
+      width: 100%;
+      padding: 10px;
+      background: #b91c1c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .contact button {
+      width: 100%;
+      padding: 12px;
+      background: #b91c1c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">PC Forge</div>
+    <div class="nav-links">
+      <a href="#catalog">Catalog</a>
+      <a href="#contact">Contact</a>
+      <button class="cart-btn" onclick="alert('Go to cart')">Cart</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h2>Build Your Dream Rig</h2>
+    <p>Simple catalog of popular PC parts.</p>
+    <a href="#catalog">View Catalog</a>
+  </section>
+
+  <section id="catalog" class="catalog">
+    <h2>PC Parts Catalog</h2>
+    <div class="cards">
+      <div class="card">
+        <span>Processor</span>
+        <h3>Ryzen 7 7700X</h3>
+        <p>8 cores and fast performance for gaming and work.</p>
+        <div class="price">₱18500</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+      <div class="card">
+        <span>Graphics Card</span>
+        <h3>RTX 4070</h3>
+        <p>Smooth 1440p gaming performance.</p>
+        <div class="price">₱42000</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+      <div class="card">
+        <span>Memory</span>
+        <h3>DDR5 32GB RAM</h3>
+        <p>High speed 6000MHz dual channel kit.</p>
+        <div class="price">₱6500</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+      <div class="card">
+        <span>Storage</span>
+        <h3>1TB NVMe SSD</h3>
+        <p>Fast PCIe 4.0 loading speeds.</p>
+        <div class="price">₱3800</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+      <div class="card">
+        <span>Chassis</span>
+        <h3>ATX Mid Tower</h3>
+        <p>Good airflow with tempered glass panel.</p>
+        <div class="price">₱3250</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+      <div class="card">
+        <span>Power Supply</span>
+        <h3>850W Gold PSU</h3>
+        <p>Efficient, fully modular power supply.</p>
+        <div class="price">₱5890</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <p>Items will appear here.</p>
+  </section>
+
+  <section id= "contact" class="contact">
+    <h2>Contact Us</h2>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <input type="text" placeholder="Your Message"></input>
+    <button>Send</button>
+  </section>
+
+  <script>
+    function showAlert() {
+      window.alert('Added to cart!');
+    }
+  </script>
+</body>
+</html>

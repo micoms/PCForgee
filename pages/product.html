@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PC Forge | Product Page</title>
   <link rel="stylesheet" href="../style/index.css" />
+  <script src="../js/cart.js"></script>
 </head>
 <body>
   <nav>
@@ -14,7 +15,7 @@
     <div class="nav-links">
       <a href="../index.html">Home</a>
       <a href="about.html">About</a>
-      <button class="cart-btn" onclick="alert('Go to cart')">Cart</button>
+      <button class="cart-btn">Cart</button>
     </div>
   </nav>
 
@@ -31,54 +32,54 @@
         <span>Processor</span>
         <h3>Ryzen 7 7700X</h3>
         <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHc7WkClsZftZYR4iUN9EIzxy1QjOhsSGLAv30d" alt="Ryzen 7 7700X" />
-        <p>8 cores and fast performance for gaming and work.</p>
-        <div class="price">₱18500</div>
-        <button type="button" onclick="showAlert()">Add to Cart</button>
+        <p>AMD Ryzen™ 7 7700X is a dominant gaming desktop processor that comes with 8 CPU cores, 16 threads, and a max boost clock speed of up to 5.4GHz.</p>
+        <div class="price">₱18,500</div>
+        <a href="Ryzen7.html">View More ></a>
       </div>
 
       <div class="card">
         <span>Graphics Card</span>
-        <h3>RTX 4070</h3>
-        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHczFTTC54T26PKYui4aVXBHhZ0ClsEeMDNnJv7" alt="RTX 4070" />
-        <p>Smooth 1440p gaming performance.</p>
-        <div class="price">₱42000</div>
-        <button type="button" onclick="showAlert()">Add to Cart</button>
+        <h3>RTX 4070Ti Verto White</h3>
+        <img src="https://easypc.com.ph/cdn/shop/files/PNY_GeForce_RTX_4070Ti_Verto_White-d_2048x2048.jpg?v=1694585466" alt="RTX 4070" />
+        <p>Experience gaming at its best with the PNY GeForce RTX 4070Ti Verto WHITE. Featuring 12GB GDDR6X memory on a 192-bit interface, this graphics card delivers stunning visuals and performance.</p>
+        <div class="price">₱42,000</div>
+        <a href="RTX4070.html">View More ></a>
       </div>
 
       <div class="card">
         <span>Memory</span>
-        <h3>DDR5 32GB RAM</h3>
+        <h3>Fury DDR5 32GB RAM</h3>
         <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcgOYZJh1jWzSPyecEvNfVJTZ5QwkrBxXiHg42" alt="DDR5 32GB RAM" />
         <p>High speed 6000MHz dual channel kit.</p>
-        <div class="price">₱6500</div>
-        <button type="button" onclick="showAlert()">Add to Cart</button>
+        <div class="price">₱6,500</div>
+        <a href="Fury32GB.html">View More ></a>
       </div>
 
       <div class="card">
         <span>Storage</span>
-        <h3>1TB NVMe SSD</h3>
+        <h3>Kingston 1TB NVMe SSD</h3>
         <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcDaLBjTbNntRMokJZEwuYpK6SzbT5iBv7Wm4V" alt="1TB NVMe SSD" />
         <p>Fast PCIe 4.0 loading speeds.</p>
-        <div class="price">₱3800</div>
-        <button type="button" onclick="showAlert()">Add to Cart</button>
+        <div class="price">₱3,800</div>
+        <a href="Kingston1TB.html">View More ></a>
       </div>
 
       <div class="card">
-        <span>Chassis</span>
-        <h3>ATX Mid Tower</h3>
-        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcmmmLLAIQZhE3XzeKsbT746Ml51tjrRNpWm0H" alt="ATX Mid Tower" />
-        <p>Good airflow with tempered glass panel.</p>
-        <div class="price">₱3250</div>
-        <button type="button" onclick="showAlert()">Add to Cart</button>
+        <span>Case</span>
+        <h3>ATX Mid Tower Case</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcmmmLLAIQZhE3XzeKsbT746Ml51tjrRNpWm0H" alt="ATX Mid Tower Case" />
+        <p>Professional gaming chassis with tempered glass panel.</p>
+        <div class="price">₱2,800</div>
+        <a href="ATXCase.html">View More ></a>
       </div>
 
       <div class="card">
         <span>Power Supply</span>
-        <h3>850W Gold PSU</h3>
-        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcGOt7YUVAdHtlKrbhW1ZnUD3FBeyp9qNsLMkO" alt="850W Gold PSU" />
-        <p>Efficient, fully modular power supply.</p>
-        <div class="price">₱5890</div>
-        <button type="button" onclick="showAlert()">Add to Cart</button>
+        <h3>Asus TUF 850W PSU</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcGOt7YUVAdHtlKrbhW1ZnUD3FBeyp9qNsLMkO" alt="Asus TUF 850W PSU" />
+        <p>80+ Gold fully modular power supply.</p>
+        <div class="price">₱6,200</div>
+        <a href="AsusTUF850W.html">View More ></a>
       </div>
     </div>
   </section>
@@ -100,6 +101,22 @@
   <script>
     function showAlert() {
       window.alert('Added to cart!');
+    }
+    function addToCart(item) {
+      var cart = document.querySelector('.cart p');
+      if (item === 'processor') {
+        cart.textContent += '\nRyzen 7 7700X';
+      } else if (item === 'graphics-card') {
+        cart.textContent += '\nRTX 4070 Ti';
+      } else if (item === 'memory') {
+        cart.textContent += '\nFury DDR5 32GB RAM';
+      } else if (item === 'storage') {
+        cart.textContent += '\nKingston 1TB NVMe SSD';
+      } else if (item === 'chassis') {
+        cart.textContent += '\nATX Mid Tower';
+      } else if (item === 'power-supply') {
+        cart.textContent += '\nAsus TUF 850W Gold PSU';
+      }
     }
   </script>
 </body>

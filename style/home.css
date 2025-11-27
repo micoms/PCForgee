@@ -195,19 +195,15 @@ nav {
   background: #9c1515;
 }
 
-.best-seller a {
-  padding: 12px 25px;
-  background: #b91c1c;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  margin-top: 30px;
-}
+.card a {
+      display: block;
+      text-decoration: none;
+      color: #b91c1c;
+      font-weight: bold;
+      padding-top: 10px;
+      font-size: 14px;
+    }
 
-.best-seller a:hover {
-  background: #9c1515;
-}
 
 .cta {
   text-align: center;

@@ -1,0 +1,300 @@
+
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #fafafa;
+  color: #333;
+  line-height: 1.6;
+}
+
+nav {
+  background: #fff;
+  padding: 16px 30px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #b91c1c;
+}
+
+.logo img {
+    width: 60px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  background: #f0f0f0;
+}
+
+.cart-btn {
+  background: #b91c1c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cart-btn:hover {
+  background: #9c1515;
+}
+
+.hero {
+  background: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h2 {
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.hero a {
+  padding: 14px 30px;
+  background: #b91c1c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.hero a:hover {
+  background: #9c1515;
+}
+
+.about {
+  text-align: center;
+  margin: 50px auto;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  max-width: 800px;
+}
+
+.about h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.about p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.about a {
+  text-decoration: none;
+  color: #b91c1c;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: #f0f0f0;
+}
+
+.about a:hover {
+  background: #f4f4f4;
+}
+
+.best-seller {
+  background: #fff;
+  padding: 40px 20px;
+}
+
+.best-seller a {
+    text-align: center;
+    align-items: center;
+
+}
+
+.best-seller h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.card span {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.card button {
+  background: #b91c1c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+.card button:hover {
+  background: #9c1515;
+}
+
+.best-seller a {
+  padding: 12px 25px;
+  background: #b91c1c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.best-seller a:hover {
+  background: #9c1515;
+}
+
+.cta {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f9fafb;
+}
+
+.cta h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta a {
+  padding: 14px 30px;
+  background: #b91c1c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.cta a:hover {
+  background: #9c1515;
+}
+
+.contact {
+  text-align: center;
+  padding: 50px 20px;
+  background: white;
+  border-top: 1px solid #ddd;
+}
+
+.contact h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.contact a {
+  text-decoration: none;
+  color: #b91c1c;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: #f0f0f0;
+}
+
+.contact a:hover {
+  background: #f4f4f4;
+}
+
+footer {
+  background: #1f2937;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer .footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer .social-links {
+  margin-top: 10px;
+}
+
+footer .social-links a {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+footer .social-links a:hover {
+  color: #b91c1c;
+}

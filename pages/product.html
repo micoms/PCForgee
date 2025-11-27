@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC Forge | Product Page</title>
+  <link rel="stylesheet" href="../style/index.css" />
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="../img/logo.png" />
+    </div>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <button class="cart-btn" onclick="alert('Go to cart')">Cart</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h2>Build Your Dream Rig</h2>
+    <p>Simple catalog of popular PC parts.</p>
+    <a href="#catalog">View Catalog</a>
+  </section>
+
+  <section id="catalog" class="catalog">
+    <h2>PC Parts Catalog</h2>
+    <div class="cards">
+      <div class="card">
+        <span>Processor</span>
+        <h3>Ryzen 7 7700X</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHc7WkClsZftZYR4iUN9EIzxy1QjOhsSGLAv30d" alt="Ryzen 7 7700X" />
+        <p>8 cores and fast performance for gaming and work.</p>
+        <div class="price">₱18500</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <span>Graphics Card</span>
+        <h3>RTX 4070</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHczFTTC54T26PKYui4aVXBHhZ0ClsEeMDNnJv7" alt="RTX 4070" />
+        <p>Smooth 1440p gaming performance.</p>
+        <div class="price">₱42000</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <span>Memory</span>
+        <h3>DDR5 32GB RAM</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcgOYZJh1jWzSPyecEvNfVJTZ5QwkrBxXiHg42" alt="DDR5 32GB RAM" />
+        <p>High speed 6000MHz dual channel kit.</p>
+        <div class="price">₱6500</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <span>Storage</span>
+        <h3>1TB NVMe SSD</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcDaLBjTbNntRMokJZEwuYpK6SzbT5iBv7Wm4V" alt="1TB NVMe SSD" />
+        <p>Fast PCIe 4.0 loading speeds.</p>
+        <div class="price">₱3800</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <span>Chassis</span>
+        <h3>ATX Mid Tower</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcmmmLLAIQZhE3XzeKsbT746Ml51tjrRNpWm0H" alt="ATX Mid Tower" />
+        <p>Good airflow with tempered glass panel.</p>
+        <div class="price">₱3250</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <span>Power Supply</span>
+        <h3>850W Gold PSU</h3>
+        <img src="https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcGOt7YUVAdHtlKrbhW1ZnUD3FBeyp9qNsLMkO" alt="850W Gold PSU" />
+        <p>Efficient, fully modular power supply.</p>
+        <div class="price">₱5890</div>
+        <button type="button" onclick="showAlert()">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="cart">
+    <h2>Your Cart</h2>
+    <p>Items will appear here.</p>
+  </section>
+
+    <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 PC Forge. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61584086232232" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showAlert() {
+      window.alert('Added to cart!');
+    }
+  </script>
+</body>
+</html>

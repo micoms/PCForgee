@@ -1,7 +1,7 @@
 // PC Forge AI Chat Assistant - Dynamic and Intelligent
 class PCForgeAI {
   constructor() {
-    this.apiKey = 'AIzaSyDyATR1eA3ZjynRfdaXQrptp6XvpajwNgo';
+    this.apiKey = 'AIzaSyAoajwVkAWqHJajiwasAKE0oqAqRE4K4NU';
     this.apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent';
   }
 

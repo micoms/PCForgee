@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../style/index.css" />
   <script src="../js/cart.js"></script>
   <script src="../js/gemini-ai.js"></script>
+  <script src="../js/product-filter.js"></script>
 </head>
 <body>
   <nav>
@@ -28,7 +29,47 @@
 
   <section id="catalog" class="catalog">
     <h2>PC Parts Catalog</h2>
-    <div class="cards">
+    
+    <!-- Search and Filter Controls -->
+    <div class="filter-section">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search products...">
+      </div>
+      
+      <div class="filter-controls">
+        <div class="category-filter">
+          <label for="categorySelect">Category:</label>
+          <select id="categorySelect">
+            <option value="all">All Products</option>
+            <option value="Processor">Processor</option>
+            <option value="Graphics Card">Graphics Card</option>
+            <option value="Memory">Memory</option>
+            <option value="Storage">Storage</option>
+            <option value="Case">Case</option>
+            <option value="Power Supply">Power Supply</option>
+          </select>
+        </div>
+        
+        <div class="price-filter">
+          <label for="priceSelect">Price Range:</label>
+          <select id="priceSelect">
+            <option value="all">All Prices</option>
+            <option value="0-5000">Under ₱5,000</option>
+            <option value="5000-15000">₱5,000 - ₱15,000</option>
+            <option value="15000-25000">₱15,000 - ₱25,000</option>
+            <option value="25000-999999">Over ₱25,000</option>
+          </select>
+        </div>
+        
+        <button id="clearFilters" class="clear-btn">Clear Filters</button>
+      </div>
+      
+      <div class="results-info">
+        <span id="resultsCounter">7 products found</span>
+      </div>
+    </div>
+    
+    <div class="cards" id="productCards">
       <div class="card">
         <span>Processor</span>
         <h3>Ryzen 7 7700X</h3>
@@ -94,11 +135,6 @@
      </div>
   </section>
 
-  <section class="cart">
-    <h2>Your Cart</h2>
-    <p>Items will appear here.</p>
-  </section>
-
     <footer>
     <div class="footer-content">
       <p>&copy; 2025 PC Forge. All rights reserved.</p>
@@ -107,27 +143,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    function showAlert() {
-      window.alert('Added to cart!');
-    }
-    function addToCart(item) {
-      var cart = document.querySelector('.cart p');
-      if (item === 'processor') {
-        cart.textContent += '\nRyzen 7 7700X';
-      } else if (item === 'graphics-card') {
-        cart.textContent += '\nRTX 4070 Ti';
-      } else if (item === 'memory') {
-        cart.textContent += '\nFury DDR5 32GB RAM';
-      } else if (item === 'storage') {
-        cart.textContent += '\nKingston 1TB NVMe SSD';
-      } else if (item === 'chassis') {
-        cart.textContent += '\nATX Mid Tower';
-      } else if (item === 'power-supply') {
-        cart.textContent += '\nAsus TUF 850W Gold PSU';
-      }
-    }
-  </script>
 </body>
 </html>

@@ -31,10 +31,8 @@ function buyNow(productId) {
     // Save back to localStorage
     localStorage.setItem('pcforge-cart', JSON.stringify(cartItems));
     
-    // Redirect to checkout page - check if we're in pages folder or root
-    const isInPagesFolder = window.location.pathname.includes('/pages/');
-    const checkoutPath = isInPagesFolder ? 'checkout.html' : 'pages/checkout.html';
-    window.location.href = checkoutPath;
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
 }
 
 // Update cart count in navigation
@@ -59,10 +57,7 @@ function updateCartButton() {
     if (cartButton) {
         cartButton.innerHTML = 'Cart (<span id="cart-count">0</span>)';
         cartButton.onclick = function() {
-            // Check if we're in pages folder or root for correct cart path
-            const isInPagesFolder = window.location.pathname.includes('/pages/');
-            const cartPath = isInPagesFolder ? 'cart.html' : 'pages/cart.html';
-            window.location.href = cartPath;
+            window.location.href = 'cart.html';
         };
         updateCartCount();
     }

@@ -171,24 +171,9 @@
                     <input type="text" id="address" name="address" placeholder="Street address" required>
                 </div>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="city">City *</label>
-                        <input type="text" id="city" name="city" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="province">Province *</label>
-                        <select id="province" name="province" required>
-                            <option value="">Select Province</option>
-                            <option value="Metro Manila">Metro Manila</option>
-                            <option value="Cebu">Cebu</option>
-                            <option value="Davao">Davao</option>
-                            <option value="Laguna">Laguna</option>
-                            <option value="Cavite">Cavite</option>
-                            <option value="Bulacan">Bulacan</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
+                  <div class="form-group">
+                    <label for="address">City *</label>
+                    <input type="text" id="City" name="City" placeholder="City address" required>
                 </div>
                 
                 <div class="form-group">
@@ -262,35 +247,133 @@
     <script>
         // Product database
         const products = {
+            // Processors
+            'intel13700k': {
+                name: 'Intel Core i7-13700K',
+                price: 24500,
+                image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/19-118-414-V01.jpg'
+            },
+            'intel13600k': {
+                name: 'Intel Core i5-13600K',
+                price: 20195,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/f4s5f4sadf.jpg?v=1760516084'
+            },
+            'ryzen57600x': {
+                name: 'AMD Ryzen 5 7600X',
+                price: 15800,
+                image: 'https://c1.neweggimages.com/ProductImageCompressAll1280/19-113-771-V01.jpg'
+            },
             'ryzen7': {
                 name: 'Ryzen 7 7700X',
                 price: 18500,
                 image: 'https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHc7WkClsZftZYR4iUN9EIzxy1QjOhsSGLAv30d'
+            },
+            // Graphics Cards
+            'rtx4080super': {
+                name: 'RTX 4080 Super',
+                price: 58000,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/2000_22_3e963b81-3a17-4f0b-9372-9c29d6aa1247_800x.jpg?v=1706766599'
             },
             'rtx4070': {
                 name: 'RTX 4070Ti Verto White',
                 price: 42000,
                 image: 'https://easypc.com.ph/cdn/shop/files/PNY_GeForce_RTX_4070Ti_Verto_White-d_2048x2048.jpg?v=1694585466'
             },
+            'rtx4060ti': {
+                name: 'RTX 4060 Ti 16GB',
+                price: 28500,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/g4sd56gsd4_800x.jpg?v=1760257421'
+            },
+            'rx7700xt': {
+                name: 'AMD RX 7700 XT',
+                price: 25500,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/1000-2023-09-29T114452.505_4950b630-a63e-4b6c-b582-3c1503cde240_800x.jpg?v=1695959787'
+            },
+            // Memory
+            'corsairddr516gb': {
+                name: 'Corsair DDR5 16GB 5600MHz',
+                price: 4200,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/Vengeance-DDR5-1UP-16GB-BLACK_01_800x.jpg?v=1713582389'
+            },
             'fury32gb': {
                 name: 'Fury DDR5 32GB RAM',
                 price: 6500,
                 image: 'https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcgOYZJh1jWzSPyecEvNfVJTZ5QwkrBxXiHg42'
             },
+            'gskillddr564gb': {
+                name: 'G.Skill Trident Z5 64GB',
+                price: 14500,
+                image: 'https://easypc.com.ph/cdn/shop/files/G.Skill_Trident_Z5_Neo_64gb-c_2048x.jpg?v=1697442274'
+            },
+            // Storage
+            'samsung980pro2tb': {
+                name: 'Samsung 980 Pro 2TB',
+                price: 8900,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/SAHGJGHJHG_1024x.jpg?v=1705736090'
+            },
             'kingston1tb': {
                 name: 'Kingston 1TB NVMe SSD',
                 price: 3800,
-                image: 'https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcDaLBjTbNntRMokJZEwuYpK6SzbT5iBv7Wm4V'
+                image: 'https://dfestore.com/wp-content/uploads/2022/10/13178-1.jpg'
+            },
+            'wdblacksn850x1tb': {
+                name: 'WD Black SN850X 1TB',
+                price: 5200,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/products/wd-black-sn850x-nvme-ssd-front.png.wdthumb.1280.1280.jpg?v=1707897519'
+            },
+            // Motherboards
+            'asusrogstrixX670e': {
+                name: 'ASUS ROG Strix X670E-E',
+                price: 21500,
+                image: 'https://dlcdnwebimgs.asus.com/files/media/B51D103D-2941-412E-8479-AF994957093B/v1/img/spec/immersion-m.png'
+            },
+            'msib650tomahawk': {
+                name: 'MSI MAG B650 Tomahawk',
+                price: 12800,
+                image: 'https://storage-asset.msi.com/global/picture/image/feature/mb/B650/MAG-B650-TOMAHAWK-WIFI/mag-b650-tomahawk-wifi.png'
+            },
+            // Cooling
+            'noctuanhd15': {
+                name: 'Noctua NH-D15',
+                price: 5800,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/products/nh_d15_chromax_black_1_4.jpg?v=1679367637'
+            },
+            'corsairh100i': {
+                name: 'Corsair H100i Elite Capellix',
+                price: 7500,
+                image: 'https://dynaquestpc.com/cdn/shop/products/CorsairiCUEH150iEliteCapellixXT240mmBlack.jpg?v=1675310211&width=640'
+            },
+            // Cases
+            'corsair4000d': {
+                name: 'Corsair 4000D Airflow',
+                price: 4500,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/products/base-4000d-airflow-config-Gallery-4000D-AF-BLACK-01_800x.jpg?v=1679480476'
             },
             'atxcase': {
                 name: 'ATX Mid Tower Case',
                 price: 2800,
                 image: 'https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcmmmLLAIQZhE3XzeKsbT746Ml51tjrRNpWm0H'
             },
+            'nzxth5flow': {
+                name: 'NZXT H5 Flow',
+                price: 4800,
+                image: 'https://dynaquestpc.com/cdn/shop/files/H5FlowWhite1.png?v=1689926688&width=600'
+            },
+            // Power Supplies
+            'corsairrm850x': {
+                name: 'Corsair RM850x',
+                price: 7800,
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/products/rmx-2021-blk-cf-9011200-ww-Gallery-RM850x-PSU-01_800x.jpg?v=1679480482'
+            },
             'asustuf850w': {
                 name: 'Asus TUF 850W PSU',
                 price: 6200,
                 image: 'https://15rlfh1xhu.ufs.sh/f/seFhat5fmoHcGOt7YUVAdHtlKrbhW1ZnUD3FBeyp9qNsLMkO'
+            },
+            'seasonicfocusgx650': {
+                name: 'Seasonic Focus GX-650',
+                price: 6200,
+                image: 'https://dynaquestpc.com/cdn/shop/products/SeasonicFocusGX650WattsFullyModular80PlusGoldSSRGX650.jpg?v=1675310218'
             }
         };
 
@@ -317,8 +400,10 @@
             const cart = getCart();
             const orderItemsDiv = document.getElementById('order-items');
             
+            console.log('Cart data:', cart); // Debug log
+            
             if (Object.keys(cart).length === 0) {
-                window.location.href = 'cart.html';
+                orderItemsDiv.innerHTML = '<p style="text-align: center; color: #666;">No items in cart. <a href="product.html">Continue Shopping</a></p>';
                 return;
             }
 
@@ -327,6 +412,11 @@
             
             for (let productId in cart) {
                 const product = products[productId];
+                if (!product) {
+                    console.log('Product not found for ID:', productId); // Debug log
+                    continue;
+                }
+                
                 const quantity = cart[productId];
                 const itemTotal = product.price * quantity;
                 subtotal += itemTotal;
@@ -345,6 +435,11 @@
                 `;
             }
             
+            if (orderHTML === '') {
+                orderItemsDiv.innerHTML = '<p style="text-align: center; color: #666;">No valid items found. <a href="product.html">Continue Shopping</a></p>';
+                return;
+            }
+            
             orderItemsDiv.innerHTML = orderHTML;
             
             const shipping = 150;
@@ -353,6 +448,8 @@
             document.getElementById('subtotal').textContent = subtotal.toLocaleString();
             document.getElementById('shipping').textContent = shipping.toLocaleString();
             document.getElementById('total').textContent = total.toLocaleString();
+            
+            console.log('Subtotal:', subtotal); // Debug log
         }
 
         // Select payment method

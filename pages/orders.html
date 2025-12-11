@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders - PC Forge</title>
+    <link rel="stylesheet" href="../style/index.css">
+
+    <style>
+        .orders-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .order-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .order-item {
+            display: flex;
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+        }
+
+        .order-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .order-summary {
+            margin-top: 15px;
+        }
+
+        .no-orders {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .continue-shopping {
+            background: #b91c1c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="../img/logo.png" alt="PC Forge Logo" />
+        </div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="product.html">Products</a>
+            <a href="orders.html">Orders</a>
+        </div>
+    </nav>
+
+    <div class="orders-container">
+        <h2>Your Orders</h2>
+
+        <div id="orders-list"></div>
+
+        <div class="no-orders" id="no-orders" style="display:none;">
+            <p>You have no orders yet.</p>
+            <button class="continue-shopping" onclick="location.href='product.html'">Start Shopping</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 PC Forge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const products = JSON.parse(localStorage.getItem("pcforge-products")) || {};
+
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem("pcforge-orders")) || [];
+            const listDiv = document.getElementById("orders-list");
+            const emptyDiv = document.getElementById("no-orders");
+
+            if (orders.length === 0) {
+                emptyDiv.style.display = "block";
+                return;
+            }
+
+            let html = '';
+
+            orders.forEach((order, index) => {
+                html += `
+                    <div class="order-box">
+                        <div class="order-header">
+                            <span>Order #${index + 1}</span>
+                            <span>${order.date}</span>
+                        </div>
+
+                        ${order.items.map(item => `
+                            <div class="order-item">
+                                <img src="${item.image}" alt="${item.name}">
+                                <div>
+                                    <div><strong>${item.name}</strong></div>
+                                    <div>₱${item.price.toLocaleString()} × ${item.quantity}</div>
+                                </div>
+                            </div>
+                        `).join("")}
+
+                        <div class="order-summary">
+                            <p><strong>Subtotal:</strong> ₱${order.subtotal.toLocaleString()}</p>
+                            <p><strong>Shipping:</strong> ₱${order.shipping.toLocaleString()}</p>
+                            <p><strong>Total:</strong> ₱${order.total.toLocaleString()}</p>
+                            ${order.deliveryDate ? `<p><strong>Delivery Date:</strong> ${new Date(order.deliveryDate).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>` : ''}
+                            ${order.status ? `<p><strong>Status:</strong> <span style="color: ${order.status === 'Processing' ? '#f59e0b' : order.status === 'Shipped' ? '#3b82f6' : '#22c55e'}; font-weight: bold;">${order.status}</span></p>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            listDiv.innerHTML = html;
+        }
+
+        // Update order statuses based on time elapsed
+        function updateOrderStatuses() {
+            const orders = JSON.parse(localStorage.getItem("pcforge-orders")) || [];
+            const now = new Date();
+            let updated = false;
+
+            orders.forEach(order => {
+                if (!order.deliveryDate || !order.status) return;
+
+                const deliveryDate = new Date(order.deliveryDate);
+                const orderDate = new Date(order.date); // This is stored as a string, need to parse it
+                const daysSinceOrder = Math.floor((now - orderDate) / (1000 * 60 * 60 * 24));
+
+                let newStatus = order.status;
+
+                if (daysSinceOrder >= 1 && order.status === 'Processing') {
+                    newStatus = 'Shipped';
+                    updated = true;
+                } else if (now >= deliveryDate && order.status === 'Shipped') {
+                    newStatus = 'Delivered';
+                    updated = true;
+                }
+
+                if (newStatus !== order.status) {
+                    order.status = newStatus;
+                }
+            });
+
+            if (updated) {
+                localStorage.setItem("pcforge-orders", JSON.stringify(orders));
+            }
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('open');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            updateOrderStatuses(); // Update statuses before loading
+            loadOrders();
+        });
+    </script>
+</body>
+</html>

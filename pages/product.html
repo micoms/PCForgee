@@ -6,7 +6,7 @@
   <title>PC Forge | Product Page</title>
   <link rel="stylesheet" href="../style/index.css" />
   <script src="../js/cart.js"></script>
-  <script src="../js/gemini-ai.js"></script>
+  
   <script src="../js/product-filter.js"></script>
 </head>
 <body>
@@ -14,10 +14,18 @@
     <div class="logo">
       <img src="../img/logo.png" />
     </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="nav-links">
       <a href="../index.html">Home</a>
       <a href="about.html">About</a>
-      <button class="cart-btn">Cart</button>
+      <a href="orders.html">Orders</a>
+      <button class="cart-btn">
+        Cart (<span id="cart-count">0</span>)
+      </button>
     </div>
   </nav>
 
@@ -306,5 +314,12 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>

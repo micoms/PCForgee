@@ -6,17 +6,22 @@
   <title>PC Forge - Build Your Dream PC</title>
   <link rel="stylesheet" href="style/home.css" />
   <script src="js/cart.js"></script>
-  <script src="js/gemini-ai.js"></script>
+  
 </head>
 <body>
   <nav>
     <div class="logo">
-      <img src="../img/logo.png" />
+      <img src="img/logo.png" />
     </div>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="nav-links">
       <a href="pages/about.html">About</a>
       <a href="pages/product.html">Products</a>
-      <a href="#contact">Contact</a>
+      <a href="pages/orders.html">Orders</a>
       <button class="cart-btn">Cart</button>
     </div>
   </nav>
@@ -118,6 +123,13 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      const hamburger = document.querySelector('.hamburger');
+      navLinks.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    }
+
     function showAlert() {
       window.alert('Added to cart!');
     }

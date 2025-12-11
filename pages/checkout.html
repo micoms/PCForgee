@@ -128,10 +128,16 @@
         <div class="logo">
             <img src="../img/logo.png" alt="PC Forge Logo" />
         </div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
             <a href="../index.html">Home</a>
             <a href="about.html">About</a>
             <a href="product.html">Products</a>
+            <a href="orders.html">Orders</a>
             <button class="cart-btn" onclick="location.href='cart.html'">
                 Cart (<span id="cart-count">0</span>)
             </button>
@@ -245,6 +251,11 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('open');
+        }
+
         // Product database
         const products = {
             // Processors
@@ -373,7 +384,7 @@
             'seasonicfocusgx650': {
                 name: 'Seasonic Focus GX-650',
                 price: 6200,
-                image: 'https://dynaquestpc.com/cdn/shop/products/SeasonicFocusGX650WattsFullyModular80PlusGoldSSRGX650.jpg?v=1675310218'
+                image: 'https://ecommerce.datablitz.com.ph/cdn/shop/files/g4sd56gsd4_800x.jpg?v=1760257421'
             }
         };
 
@@ -466,24 +477,42 @@
             document.getElementById('paymentMethod').value = method;
         }
 
+        // Calculate delivery date (5 business days from order date)
+        function calculateDeliveryDate() {
+            const orderDate = new Date();
+            let businessDays = 5;
+            let deliveryDate = new Date(orderDate);
+
+            while (businessDays > 0) {
+                deliveryDate.setDate(deliveryDate.getDate() + 1);
+                // Skip weekends (Saturday = 6, Sunday = 0)
+                if (deliveryDate.getDay() !== 0 && deliveryDate.getDay() !== 6) {
+                    businessDays--;
+                }
+            }
+
+            return deliveryDate;
+        }
+
         // Place order
         function placeOrder() {
             const form = document.getElementById('checkout-form');
-            
+
             // Check if form is valid
             if (!form.checkValidity()) {
                 alert('Please fill in all required fields.');
                 return;
             }
-            
+
             // Check if payment method is selected
             if (!selectedPaymentMethod) {
                 alert('Please select a payment method.');
                 return;
             }
-            
+
             // Get form data
             const formData = new FormData(form);
+            const deliveryDate = calculateDeliveryDate();
             const orderData = {
                 customer: {
                     firstName: formData.get('firstName'),
@@ -498,18 +527,21 @@
                 paymentMethod: selectedPaymentMethod,
                 items: getCart(),
                 orderDate: new Date().toISOString(),
+                deliveryDate: deliveryDate.toISOString(),
+                status: 'Processing',
                 orderNumber: 'PC' + Date.now()
             };
-            
+
             // Store order data
             localStorage.setItem('pcforge-order', JSON.stringify(orderData));
-            
+
             // Clear cart
             localStorage.removeItem('pcforge-cart');
-            
+
             // Redirect to confirmation page
             window.location.href = 'order-confirmation.html';
         }
+        
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {

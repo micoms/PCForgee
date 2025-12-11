@@ -100,10 +100,16 @@
         <div class="logo">
             <img src="../img/logo.png" alt="PC Forge Logo" />
         </div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
             <a href="../index.html">Home</a>
             <a href="about.html">About</a>
             <a href="product.html">Products</a>
+            <a href="orders.html">Orders</a>
             <button class="cart-btn" onclick="location.href='cart.html'">
                 Cart (<span id="cart-count">0</span>)
             </button>
@@ -149,6 +155,13 @@
                 </div>
             </div>
             
+            <div class="delivery-info">
+                <div class="section-title">Delivery Information</div>
+                <strong>Status:</strong> <span id="delivery-status" style="color: #f59e0b; font-weight: bold;"></span><br>
+                <strong>Estimated Delivery:</strong> <span id="delivery-date"></span><br>
+                <small style="color: #666;">Delivery typically takes 3-7 business days depending on your location.</small>
+            </div>
+
             <div class="payment-info">
                 <strong>Payment Method:</strong> <span id="payment-method"></span><br>
                 <div id="payment-instructions"></div>
@@ -176,6 +189,11 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('open');
+        }
+
         // Product database
         const products = {
             // Processors
@@ -316,17 +334,17 @@
         // Display order confirmation details
         function displayOrderDetails() {
             const orderData = localStorage.getItem('pcforge-order');
-            
+
             if (!orderData) {
                 window.location.href = 'product.html';
                 return;
             }
-            
+
             const order = JSON.parse(orderData);
-            
+
             // Display order number
             document.getElementById('order-number').textContent = 'Order #: ' + order.orderNumber;
-            
+
             // Display customer details
             const customer = order.customer;
             document.getElementById('customer-details').innerHTML = `
@@ -336,17 +354,17 @@
                 ${customer.address}<br>
                 ${customer.city}, ${customer.province} ${customer.zipCode}
             `;
-            
+
             // Display order items
             let itemsHTML = '';
             let subtotal = 0;
-            
+
             for (let productId in order.items) {
                 const product = products[productId];
                 const quantity = order.items[productId];
                 const itemTotal = product.price * quantity;
                 subtotal += itemTotal;
-                
+
                 itemsHTML += `
                     <div class="order-item">
                         <div class="item-details">
@@ -359,17 +377,17 @@
                     </div>
                 `;
             }
-            
+
             document.getElementById('order-items-list').innerHTML = itemsHTML;
-            
+
             // Display totals
             const shipping = 150;
             const total = subtotal + shipping;
-            
+
             document.getElementById('order-subtotal').textContent = subtotal.toLocaleString();
             document.getElementById('order-shipping').textContent = shipping.toLocaleString();
             document.getElementById('order-total').textContent = total.toLocaleString();
-            
+
             // Display payment method
             const paymentMethods = {
                 'cod': 'Cash on Delivery',
@@ -377,10 +395,10 @@
                 'bank': 'Bank Transfer',
                 'card': 'Credit Card'
             };
-            
+
             const paymentMethod = paymentMethods[order.paymentMethod] || order.paymentMethod;
             document.getElementById('payment-method').textContent = paymentMethod;
-            
+
             // Display payment instructions
             let paymentInstructions = '';
             switch (order.paymentMethod) {
@@ -397,8 +415,68 @@
                     paymentInstructions = 'Your card will be charged upon order processing.';
                     break;
             }
-            
+
             document.getElementById('payment-instructions').innerHTML = paymentInstructions;
+
+            // Display delivery information
+            if (order.deliveryDate) {
+                const deliveryDate = new Date(order.deliveryDate);
+                document.getElementById('delivery-date').textContent =
+                    deliveryDate.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+            }
+
+            const status = order.status || 'Processing';
+            document.getElementById('delivery-status').textContent = status;
+
+            // Save order to orders history
+            saveOrderToHistory(order, subtotal, shipping, total);
+        }
+
+        // Save order to orders history
+        function saveOrderToHistory(order, subtotal, shipping, total) {
+            // Get existing orders or initialize empty array
+            const orders = JSON.parse(localStorage.getItem('pcforge-orders')) || [];
+
+            // Transform items from {productId: quantity} to array of objects
+            const orderItems = [];
+            for (let productId in order.items) {
+                const product = products[productId];
+                if (product) {
+                    orderItems.push({
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        quantity: order.items[productId]
+                    });
+                }
+            }
+
+            // Create order object for history
+            const orderForHistory = {
+                items: orderItems,
+                subtotal: subtotal,
+                shipping: shipping,
+                total: total,
+                date: new Date(order.orderDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                deliveryDate: order.deliveryDate,
+                status: order.status || 'Processing',
+                orderNumber: order.orderNumber
+            };
+
+            // Add to orders array
+            orders.push(orderForHistory);
+
+            // Save back to localStorage
+            localStorage.setItem('pcforge-orders', JSON.stringify(orders));
         }
 
         // Initialize page

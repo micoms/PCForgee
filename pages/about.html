@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCForge | About Us</title>
     <link rel="stylesheet" href="../style/index.css" />
-    <script src="../js/gemini-ai.js"></script>
+    
     <script src="../js/cart.js"></script>
 </head>
 <body>
@@ -13,9 +13,15 @@
     <div class="logo">
       <img src="../img/logo.png" />
     </div>
+    <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
             <a href="../index.html">Home</a>
             <a href="product.html">Products</a>
+            <a href="pages/orders.html">Orders</a>
             <button class="cart-btn">Cart</button>
         </div>
     </nav>
@@ -61,4 +67,10 @@
     </div>
   </footer>
 </body>
+<script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('open');
+    }
+</script>
 </html>

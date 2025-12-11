@@ -12,10 +12,16 @@
         <div class="logo">
             <img src="../img/logo.png" alt="PC Forge Logo" />
         </div>
+        <button class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav-links">
             <a href="../index.html">Home</a>
             <a href="about.html">About</a>
             <a href="product.html">Products</a>
+            <a href="orders.html">Orders</a>
             <button class="cart-btn">Cart</button>
         </div>
     </nav>
@@ -422,5 +428,12 @@
             }
         }
     </style>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
